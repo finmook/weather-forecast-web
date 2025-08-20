@@ -1,0 +1,27 @@
+.bg{
+  position: fixed;          /* สำคัญ */
+  inset: 0;                 /* กินเต็มจอ */
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(14px);
+  transform: scale(1.08);   /* กันขอบแตกจาก blur */
+  z-index: 0; 
+}
+#box{
+    
+    position: fixed;   
+    top:10vh;
+    left:10vw;       /* สำคัญ */
+    width: 80vw;
+    height: 80vh;         
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    border-radius: 20px;
+    
+}
+#app{
+    position: fixed;
+    
+    z-index:2;
+}

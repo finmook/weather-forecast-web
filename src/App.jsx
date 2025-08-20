@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import './App.css';
 import axios from "axios";
+import DashBoard from './components/dashboard';
 
 function App() {
   const [inputCity, setInputCity] = useState("");
@@ -39,11 +40,14 @@ function App() {
     else if (weather == "Atmosphere") image = "/atmosphere.jpg";
     else if (weather == "Clear") image = "/sunny.jpg";
 
-    document.body.style.background = `url(${image})`;
-    document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundRepeat = "no-repeat";
-    document.body.style.height = "100vh";
-
+    document.getElementsByClassName("bg")[0].style.background = `url(${image})`;//when change background other sub-properties change too
+    document.getElementsByClassName("bg")[0].style.backgroundSize = "cover";
+    document.getElementsByClassName("bg")[0].style.backgroundRepeat = "no-repeat";
+    document.getElementsByClassName("bg")[0].style.height = "100vh";
+    document.getElementById("box").style.background= `url(${image})`;
+    document.getElementById("box").style.backgroundSize ="cover";
+    document.getElementById("box").style.backgroundRepeat = "no-repeat";
+    // document.getElementById("box").style.
   }
   
   return (
@@ -70,10 +74,9 @@ function App() {
           }} />
         <Button variant="outlined" sx={{ color: "white", borderColor: "white" }} onClick={handleClick} value={inputCity}>OK</Button>
       </Stack>
-      <div>
-        <h1>{weather}</h1>
-        <h1>{temp}</h1>
-        <h1>{weatherDescription}</h1>
+      <div className="data">
+        <DashBoard weather={weather} temp={temp} weatherDescription={weatherDescription} />
+        
       </div>
 
 

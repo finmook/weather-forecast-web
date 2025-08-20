@@ -1,2 +1,10 @@
-
+.data{
+    position: fixed;   
+    top:10vh;
+    left:10vw;       /* สำคัญ */
+    width: 80vw;
+    height: 80vh;
+    border-radius: 20px;
+    display:grid;
+}
 

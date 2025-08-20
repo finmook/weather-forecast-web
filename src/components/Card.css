@@ -1,0 +1,16 @@
+.card{
+    position: absolute;
+    width:90%;
+    height:90%;
+    margin-top:5%;
+    margin-left:5%;
+    text-align: center;
+    color:black;
+    border-radius: 20px ;
+    backdrop-filter: blur(12px);
+    
+    
+}
+h1{
+    backdrop-filter: none;
+}
