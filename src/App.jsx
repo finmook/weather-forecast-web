@@ -8,9 +8,14 @@ import DashBoard from './components/dashboard';
 
 function App() {
   const [inputCity, setInputCity] = useState("");
-  const [weather, setWeather] = useState("");
-  const [temp, setTemp] = useState("");
-  const [weatherDescription,setWeatherDescription]=useState("");
+  const [weather, setWeather] = useState("-");
+  const [weatherDescription,setWeatherDescription]=useState("-");
+  const [temp, setTemp] = useState("-");
+  const [feelLike,setFeelLike]=useState("-");
+  const [humidity,setHumidity]=useState("-");
+  const [date,setDate]=useState(new Date().toDateString());
+  const [country,setCountry]=useState("-");
+  const [pressure,setPressure]=useState("-");
   useEffect(() => {
     changeBackground();
   }, [weather]);
@@ -23,9 +28,13 @@ function App() {
         params: { city: inputCity },
       });
       setWeather(response.data.weather[0].main);
-      setTemp(response.data.main.temp);
+      setTemp(`${response.data.main.temp} ºC`);
+      setFeelLike(`${response.data.main.feels_like} ºC`);
       setWeatherDescription(response.data.weather[0].description);
-      
+      setHumidity(`${response.data.main.feels_like} %`);
+      setDate(new Date().toDateString());
+      setCountry(response.data.name);
+      setPressure(response.data.main.pressure)
     } catch (err) {
       console.log(err);
     }
@@ -51,8 +60,8 @@ function App() {
   }
   
   return (
-    <div>
-      <Stack direction="row" spacing={2} alignItems="center">
+    <div >
+      <Stack direction="row" spacing={2} alignItems="center"  justifyContent="center" sx={{'@media (max-height:500px)': { display: 'none' }}} >
         <TextField id="outlined-basic" label="City" variant="outlined" sx={{
           '& .MuiInputLabel-root': {
             color: 'white',            // label color (normal)
@@ -64,7 +73,8 @@ function App() {
             '& fieldset': { borderColor: 'white' },   // border color
             '&:hover fieldset': { borderColor: 'white' },
             '&.Mui-focused fieldset': { borderColor: 'white' }
-          }
+          },
+          
         }} value={inputCity} onChange={(e) => setInputCity(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
@@ -75,7 +85,7 @@ function App() {
         <Button variant="outlined" sx={{ color: "white", borderColor: "white" }} onClick={handleClick} value={inputCity}>OK</Button>
       </Stack>
       <div className="data">
-        <DashBoard weather={weather} temp={temp} weatherDescription={weatherDescription} />
+        <DashBoard weather={weather} temp={temp} weatherDescription={weatherDescription} feelLike={feelLike} humidity={humidity} date={date} country={country} pressure={pressure}/>
         
       </div>
 

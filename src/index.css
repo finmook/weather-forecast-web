@@ -8,7 +8,6 @@
   z-index: 0; 
 }
 #box{
-    
     position: fixed;   
     top:10vh;
     left:10vw;       /* สำคัญ */
@@ -24,4 +23,7 @@
     position: fixed;
     
     z-index:2;
+}
+body{
+    color:black;
 }
