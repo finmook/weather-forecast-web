@@ -1,21 +1,58 @@
+/* .frosted{
+    
+    position: relative;
+    width:80%;
+    height:80%;
+    margin-top:5%;
+    margin-left:10%;
+    
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.22);
+    
+    border-radius: 20px ;
+    
+    
+    
+    
+}
+h1{
+    margin:0;
+    font-size: clamp(20px, 3.6vmin, 40px);
+} */
 .frosted{
     display:flex;
     flex-direction: column;
-    position: absolute;
+    position: relative;
+    
     width:90%;
     height:90%;
     margin-top:5%;
     margin-left:5%;
+    margin-right:0;
+    margin-bottom: 0;
     text-align: center;
     align-items:center;
     justify-content: center;
-    /* color:black; */
+    
     border-radius: 20px ;
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.22);
     
     
-}
+} 
+
 h1{
-    font-size: 3vw;
+        font-size: clamp(20px, 3.5vmin, 40px);
+        margin:4%;
+
 }
+/* @media (max-width:600px){
+    .frosted{
+        height:70%;
+        
+    }
+} */

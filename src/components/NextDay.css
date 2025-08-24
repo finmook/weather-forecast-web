@@ -1,0 +1,22 @@
+#nextday-container{
+    position:relative;
+    height:70%;
+    width:100%;
+    margin-bottom:10%;
+    
+    min-height: 375px;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 20px;
+}
+@media (max-width:600px) {
+   #nextday-container{
+    margin-bottom:5%;
+    flex-shrink:0;
+   }
+}
+/* @media ((max-height:500px) and (max-width:900px)){
+    #nextday-container{
+         display: 'none' 
+    }
+}  */

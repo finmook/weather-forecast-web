@@ -1,10 +1,11 @@
 .card{
     
-    position: absolute;
+    position: relative;
     width:80%;
     height:80%;
     margin-top:5%;
     margin-left:10%;
+    flex-shrink:0;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -20,5 +21,5 @@
 }
 h5,h6{
     margin:0;
-    font-size: 2vw;
+    font-size: clamp(10px, 2.6vmin, 30px);
 }

@@ -1,0 +1,14 @@
+#today-container{
+    position:relative;
+    height:30%;
+    width:100%;
+    min-height: 100px;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 20px;
+}
+@media (max-height:600px){
+    #today-container{
+        flex-shrink:0;
+    }
+} 
