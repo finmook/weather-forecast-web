@@ -1,0 +1,10 @@
+.each-time{
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    width:200px;
+    flex-shrink: 0;
+    height:100%;
+}

@@ -16,6 +16,7 @@ function App() {
   const [date,setDate]=useState(new Date().toDateString());
   const [country,setCountry]=useState("-");
   const [pressure,setPressure]=useState("-");
+  const [foreCast,setForeCast]=useState([]);
   useEffect(() => {
     changeBackground();
   }, [weather]);
@@ -27,14 +28,19 @@ function App() {
       const response = await axios.get("/api/weather", {
         params: { city: inputCity },
       });
-      setWeather(response.data.weather[0].main);
-      setTemp(`${response.data.main.temp} ºC`);
-      setFeelLike(`${response.data.main.feels_like} ºC`);
-      setWeatherDescription(response.data.weather[0].description);
-      setHumidity(`${response.data.main.feels_like} %`);
+      let country=inputCity[0].toUpperCase()+inputCity.slice(1).toLowerCase();
+      let {nowData,foreCast}=response.data;
+      //console.log(foreCast);
+      setWeather(nowData.weather[0].main);
+      setTemp(`${nowData.main.temp} ºC`);
+      setFeelLike(`${nowData.main.feels_like} ºC`);
+      setWeatherDescription(nowData.weather[0].description);
+      setHumidity(`${nowData.main.feels_like} %`);
       setDate(new Date().toDateString());
-      setCountry(response.data.name);
-      setPressure(response.data.main.pressure)
+      setCountry(country);
+      setPressure(nowData.main.pressure)
+      setForeCast(foreCast.list);
+      setInputCity("");
     } catch (err) {
       console.log(err);
     }
@@ -85,7 +91,7 @@ function App() {
         <Button variant="outlined" sx={{ color: "white", borderColor: "white" }} onClick={handleClick} value={inputCity}>OK</Button>
       </Stack>
       <div className="data">
-        <DashBoard weather={weather} temp={temp} weatherDescription={weatherDescription} feelLike={feelLike} humidity={humidity} date={date} country={country} pressure={pressure}/>
+        <DashBoard weather={weather} temp={temp} weatherDescription={weatherDescription} feelLike={feelLike} humidity={humidity} date={date} country={country} pressure={pressure} foreCast={foreCast}/>
         
       </div>
 

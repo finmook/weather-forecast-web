@@ -27,7 +27,7 @@ function DashBoard(props) {
             </Grid>
              <Grid size={{xs:12,sm:6}} >
 
-                <ForeCast />
+                <ForeCast foreCast={props.foreCast} />
 
             </Grid>
 
