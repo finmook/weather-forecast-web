@@ -20,7 +20,8 @@ app.get("/api/weather", async (req, res) => {
         }
         const response2 = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${response1.data[0].lat}&lon=${response1.data[0].lon}&units=metric&appid=${process.env.API_KEY}`);
         const response3= await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${response1.data[0].lat}&lon=${response1.data[0].lon}&units=metric&appid=${process.env.API_KEY}`);
-        res.send({nowData:response2.data,foreCast:response3.data});
+        const aqiresponse=await axios.get(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${response1.data[0].lat}&lon=${response1.data[0].lon}&appid=${process.env.API_KEY}`);
+        res.send({nowData:response2.data,foreCast:response3.data,aqi:aqiresponse.data});
 
     } catch (err) {
         console.log(err);

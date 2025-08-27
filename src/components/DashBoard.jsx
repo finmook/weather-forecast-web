@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
@@ -7,6 +8,11 @@ import Card from './Card';
 import ForeCast from './Forecast';
 import './DashBoard.css';
 function DashBoard(props) {
+   
+    
+    const aqiMap = ["-", "Good", "Fair", "Moderate", "Poor", "Very poor"];
+    const aqiTranslate = aqiMap[props.aqi] ?? "-";
+
     return (
         
           <Grid container spacing={0} sx={{ overflowY:'auto'}}>
@@ -19,7 +25,7 @@ function DashBoard(props) {
                         <Grid size={6}><Box sx={{ height:'100%',minHeight:'75px',width:'100%',position:'relative'}}><Card val={"feel likes"} result={props.feelLike}/></Box></Grid>
                         <Grid size={6}><Box sx={{ height:'100%',minHeight:'75px',width:'100%',position:'relative'}}><Card val={"humidity"}result={props.humidity} /></Box></Grid>
                         <Grid size={6}><Box sx={{ height:'100%',minHeight:'75px',width:'100%',position:'relative'}}><Card val={"pressure"}result={props.pressure} /></Box></Grid>
-                        <Grid size={6}><Box sx={{ height:'100%',minHeight:'75px',width:'100%',position:'relative'}}><Card val={"aqi"} result={props.humidity} /></Box></Grid>
+                        <Grid size={6}><Box sx={{ height:'100%',minHeight:'75px',width:'100%',position:'relative'}}><Card val={"air quality"} result={aqiTranslate} /></Box></Grid>
                     </Grid>
 
                 </Stack>

@@ -20,6 +20,6 @@
     
 }
 h5,h6{
-    margin:0;
+    margin:5%;
     font-size: clamp(10px, 2.6vmin, 30px);
 }

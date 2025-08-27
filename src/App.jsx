@@ -17,6 +17,7 @@ function App() {
   const [country,setCountry]=useState("-");
   const [pressure,setPressure]=useState("-");
   const [foreCast,setForeCast]=useState([]);
+  const [aqi,setAqi]=useState("-");
   useEffect(() => {
     changeBackground();
   }, [weather]);
@@ -29,7 +30,7 @@ function App() {
         params: { city: inputCity },
       });
       let country=inputCity[0].toUpperCase()+inputCity.slice(1).toLowerCase();
-      let {nowData,foreCast}=response.data;
+      let {nowData,foreCast,aqi}=response.data;
       //console.log(foreCast);
       setWeather(nowData.weather[0].main);
       setTemp(`${nowData.main.temp} ºC`);
@@ -40,6 +41,7 @@ function App() {
       setCountry(country);
       setPressure(nowData.main.pressure)
       setForeCast(foreCast.list);
+      setAqi(aqi.list[0].main.aqi);
       setInputCity("");
     } catch (err) {
       console.log(err);
@@ -91,7 +93,7 @@ function App() {
         <Button variant="outlined" sx={{ color: "white", borderColor: "white" }} onClick={handleClick} value={inputCity}>OK</Button>
       </Stack>
       <div className="data">
-        <DashBoard weather={weather} temp={temp} weatherDescription={weatherDescription} feelLike={feelLike} humidity={humidity} date={date} country={country} pressure={pressure} foreCast={foreCast}/>
+        <DashBoard weather={weather} temp={temp} weatherDescription={weatherDescription} feelLike={feelLike} humidity={humidity} date={date} country={country} pressure={pressure} foreCast={foreCast} aqi={aqi}/>
         
       </div>
 

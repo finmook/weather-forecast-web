@@ -2,8 +2,11 @@
     position:relative;
     height:70%;
     width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom:10%;
-    
+    overflow-y: auto;
     min-height: 375px;
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.22);

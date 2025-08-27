@@ -1,0 +1,21 @@
+#eachday-container{
+    position:relative;
+    height:30%;
+    width:90%;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    margin:5%;
+    min-height: 35px;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 20px;
+}
+.day-text{
+    margin:5%
+}
+@media (max-height:600px){
+    #eachday-container{
+        flex-shrink:0;
+    }
+} 
