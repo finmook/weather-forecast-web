@@ -36,7 +36,7 @@ function App() {
       setTemp(`${nowData.main.temp} ºC`);
       setFeelLike(`${nowData.main.feels_like} ºC`);
       setWeatherDescription(nowData.weather[0].description);
-      setHumidity(`${nowData.main.feels_like} %`);
+      setHumidity(`${nowData.main.humidity} %`);
       setDate(new Date().toDateString());
       setCountry(country);
       setPressure(nowData.main.pressure)
