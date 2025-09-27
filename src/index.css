@@ -1,32 +1,32 @@
-.bg{
-  position: fixed;          /* สำคัญ */
-  inset: 0;                 /* กินเต็มจอ */
-  background-size: cover;
-  background-repeat: no-repeat;
-  filter: blur(14px);
-  transform: scale(1.08);   /* กันขอบแตกจาก blur */
-  z-index: 0; 
+.bg {
+    position: fixed;
+    inset: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(14px);
+    transform: scale(1.08);
+    /* กันขอบแตกจาก blur */
+    z-index: 0;
 }
-#box{
-    position: fixed;   
-    top:10vh;
-    left:10vw;       /* สำคัญ */
+
+#box {
+    position: fixed;
+    top: 10vh;
+    left: 10vw;
     width: 80vw;
-    height: 80vh;         
+    height: 80vh;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 1;
     border-radius: 20px;
-    
 }
-#app{
+
+#app {
     position: fixed;
-    
-    z-index:2;
+    z-index: 2;
 }
-body{
-    color:black;
+
+body {
+    color: black;
     font-family: 'Poppins', sans-serif;
 }
-
-

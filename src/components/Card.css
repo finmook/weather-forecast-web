@@ -1,5 +1,4 @@
-.card{
-    
+.card{ 
     position: relative;
     width:80%;
     height:80%;
@@ -12,12 +11,7 @@
     flex-direction: column;
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.22);
-    /* color:#EEE6CA; */
     border-radius: 20px ;
-    
-    
-    
-    
 }
 h5,h6{
     margin:5%;

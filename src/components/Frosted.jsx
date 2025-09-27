@@ -1,4 +1,3 @@
-import React from "react";
 import './Frosted.css';
 function Frosted(props){
     return (<div className="frosted">

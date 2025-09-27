@@ -7,6 +7,7 @@ import axios from "axios";
 import DashBoard from './components/dashboard';
 
 function App() {
+  const [timeZone,setTimeZone] = useState(0);
   const [inputCity, setInputCity] = useState("");
   const [weather, setWeather] = useState("-");
   const [weatherDescription,setWeatherDescription]=useState("-");
@@ -23,7 +24,7 @@ function App() {
   }, [weather]);
 
   async function handleClick(event) {
-    const newValue = event.target.value;
+    
 
     try {
       const response = await axios.get("/api/weather", {
@@ -31,13 +32,13 @@ function App() {
       });
       let country=inputCity[0].toUpperCase()+inputCity.slice(1).toLowerCase();
       let {nowData,foreCast,aqi}=response.data;
-      //console.log(foreCast);
+      setTimeZone(nowData.timezone);
       setWeather(nowData.weather[0].main);
       setTemp(`${nowData.main.temp} ºC`);
       setFeelLike(`${nowData.main.feels_like} ºC`);
       setWeatherDescription(nowData.weather[0].description);
       setHumidity(`${nowData.main.humidity} %`);
-      setDate(new Date().toDateString());
+      setDate(new Date(Date.now()+nowData.timezone*1000).toDateString());
       setCountry(country);
       setPressure(nowData.main.pressure)
       setForeCast(foreCast.list);
@@ -64,7 +65,6 @@ function App() {
     document.getElementById("box").style.background= `url(${image})`;
     document.getElementById("box").style.backgroundSize ="cover";
     document.getElementById("box").style.backgroundRepeat = "no-repeat";
-    // document.getElementById("box").style.
   }
   
   return (
@@ -72,13 +72,13 @@ function App() {
       <Stack direction="row" spacing={2} alignItems="center"  justifyContent="center" sx={{'@media (max-height:500px)': { display: 'none' }}} >
         <TextField id="outlined-basic" label="City" variant="outlined" sx={{
           '& .MuiInputLabel-root': {
-            color: 'white',            // label color (normal)
+            color: 'white',            
           },
           '& .MuiInputLabel-root.Mui-focused': {
-            color: 'white',            // label color (focused)
+            color: 'white',           
           },
           '& .MuiOutlinedInput-root': {
-            '& fieldset': { borderColor: 'white' },   // border color
+            '& fieldset': { borderColor: 'white' },   
             '&:hover fieldset': { borderColor: 'white' },
             '&.Mui-focused fieldset': { borderColor: 'white' }
           },
@@ -93,7 +93,7 @@ function App() {
         <Button variant="outlined" sx={{ color: "white", borderColor: "white" }} onClick={handleClick} value={inputCity}>OK</Button>
       </Stack>
       <div className="data">
-        <DashBoard weather={weather} temp={temp} weatherDescription={weatherDescription} feelLike={feelLike} humidity={humidity} date={date} country={country} pressure={pressure} foreCast={foreCast} aqi={aqi}/>
+        <DashBoard weather={weather} temp={temp} weatherDescription={weatherDescription} feelLike={feelLike} humidity={humidity} date={date} country={country} pressure={pressure} foreCast={foreCast} aqi={aqi} timeZone={timeZone}/>
         
       </div>
 

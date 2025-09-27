@@ -1,4 +1,3 @@
-import React from "react";
 import './NextDayTime.css';
 function NextDayTime(props){
     return (<div className="next-day-time">

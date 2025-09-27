@@ -1,30 +1,39 @@
-import React from "react";
 import EachDay from "./EachDay";
 import './NextDay.css';
-const todayDay=new Date();
-function daysInMonth (month, year) { 
-  return new Date(year, month, 0).getDate();
-}
-function createEachDay(day, nextDayDatas) {
+
+function createEachDay(day, nextDayDatas,todayDay,timeZone) {
+    const target = new Date(Date.UTC(
+    todayDay.getUTCFullYear(),
+    todayDay.getUTCMonth(),
+    todayDay.getUTCDate() + day,
+    0, 0, 0
+  ));
     const eachDayDatas = nextDayDatas.filter(nextDayData => {
-        return (new Date(nextDayData.dt * 1000).getDate()) == (((todayDay.getDate() + day-1)%daysInMonth(todayDay.getMonth()+1,todayDay.getFullYear()))+1);
+    const local = new Date(nextDayData.dt * 1000 + timeZone * 1000);
+    return (
+      local.getUTCFullYear() === target.getUTCFullYear() &&
+      local.getUTCMonth() === target.getUTCMonth() &&
+      local.getUTCDate() === target.getUTCDate()
+    );
     })
-    console.log(eachDayDatas);
     return (
         
-        <EachDay eachDayDatas={eachDayDatas} />
+        <EachDay eachDayDatas={eachDayDatas} timeZone={timeZone} />
     );
 }
 function NextDay(props) {
-    
+    const timeZone=props.timeZone;
+    const todayDay=new Date(Date.now()+timeZone*1000);
+
+
     const datas = props.nextDayForeCast;
     const days = [1, 2, 3, 4];
     const nextDayDatas = datas.filter((data) => {
-        return (new Date(data.dt * 1000).getDate()) != (todayDay.getDate())
+        return (new Date(data.dt * 1000+timeZone*1000).getUTCDate()) != (todayDay.getUTCDate())
     })
     return (<div id="nextday-container">
         <h1>Daily Forecast</h1>
-        {days.map((day) => (createEachDay(day, nextDayDatas)))}
+        {days.map((day) => (createEachDay(day, nextDayDatas,todayDay,timeZone)))}
     </div>)
 }
 export default NextDay;

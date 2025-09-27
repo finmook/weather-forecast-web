@@ -1,7 +1,7 @@
 .data{
     position: fixed;   
     top:10vh;
-    left:10vw;       /* สำคัญ */
+    left:10vw;      
     width: 80vw;
     height: 80vh;
     border-radius: 20px;

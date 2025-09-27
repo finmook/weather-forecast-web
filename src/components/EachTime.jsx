@@ -1,5 +1,3 @@
-import React from "react";
-import Stack from "@mui/material/Stack";
 import './EachTime.css';
 function EachTime(props){
     return (<div className="each-time">

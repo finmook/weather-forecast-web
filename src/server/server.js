@@ -1,9 +1,8 @@
 import * as dotenv from 'dotenv'
-dotenv.config()//to use .env file but server.js is not in root
+dotenv.config()
 
 import express from "express";
 import axios from "axios";
-
 
 const app = express();
 const port = 3000;
