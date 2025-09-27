@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import './App.css';
 import axios from "axios";
-import DashBoard from './components/dashboard';
+import DashBoard from './components/DashBoard.jsx';
 
 function App() {
   const [timeZone,setTimeZone] = useState(0);
